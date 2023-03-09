@@ -82,11 +82,12 @@ skip-string-normalization = true
 extend-exclude = "(.venv)"
 
 [tool.ruff]
-# Enable Pyflakes `E` and `F` codes by default.
-select = ["ALL"]
+# Enable pycodestyle (`E`) and Pyflakes (`F`) codes by default.
+select = ["E", "F"]
 ignore = []
 
-fixable = ["A", "B", "C", "D", "E", "F", "Q", "ERA", "RUF", "PGH", "ARG", "ANN", "UP", "I"]
+# Allow autofix for all enabled rules (when `--fix`) is provided.
+fixable = ["A", "B", "C", "D", "E", "F"]
 unfixable = []
 
 # Exclude a variety of commonly ignored directories.
