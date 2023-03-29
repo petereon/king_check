@@ -14,7 +14,7 @@ packages = [{ include = "king_check", from = "src" }]
 verbosity = -1
 
 [tool.poe.tasks]
-"black" = { shell = "poetry run black ./src/" }
+"black" = { shell = "poetry run black ./src/; poetry run black ./test/" }
 "mypy" = { shell = "poetry run mypy ./src/" }
 "ruff" = { shell = 'poetry run ruff ./src/ --fix' }
 "perflint" = { shell = "poetry run perflint ./src/" }
@@ -127,6 +127,7 @@ max-complexity = 10
 
 [tool.poetry.dependencies]
 python = "^3.9"
+hypothesis = "^6.70.1"
 
 
 [tool.poetry.group.dev.dependencies]
