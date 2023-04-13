@@ -62,14 +62,32 @@ def _():
 
 @test("Given Pawn is at starting position, it can move 2 steps ahead")
 def _():
-    p = Pawn()
-    expect(p.validate_move(("A", "7"), ("A", "5"))[0]).to.be_true()
-    expect(p.validate_move(("A", "7"), ("A", "5"))[1]).to.be_equal_to(None)
+    expect(Pawn.validate_move(("A", "7"), ("A", "5"), color="black")[0]).to.be_true()
+    expect(Pawn.validate_move(("A", "7"), ("A", "5"), color="black")[1]).to.be_equal_to(None)
 
 
-@test("Determine if piece is at starting possition")
+@test("Given Pawn is at non-starting position, it can move 1 step ahead")
 def _():
-    pass
+    expect(Pawn.validate_move(("A", "3"), ("A", "4"), color="white")[0]).to.be_true()
+    expect(Pawn.validate_move(("A", "3"), ("A", "4"), color="white")[1]).to.be_equal_to(None)
+
+
+@test("Given Pawn is at non-starting position, it can move 1 diagonally")
+def _():
+    expect(Pawn.validate_move(("A", "3"), ("B", "4"), color="white")[0]).to.be_true()
+    expect(Pawn.validate_move(("A", "3"), ("B", "4"), color="white")[1]).to.be_equal_to(None)
+
+
+@test("Given Pawn is at non-starting position, it cannot move 1 steps vertically")
+def _():
+    expect(Pawn.validate_move(("A", "3"), ("B", "3"), color="white")[0]).to.be_false()
+    expect(Pawn.validate_move(("A", "3"), ("B", "3"), color="white")[1]).to.be_equal_to("Cannot move there")
+
+
+@test("Determine if piece is at starting position")
+def _():
+    expect(Pawn.is_starting_position(("A", "2"), color="white")).to.be_true()
+    expect(Pawn.is_starting_position(("A", "3"), color="white")).to.be_false()
 
 
 # @test(f'Board cell with column index 0 and row index 0 is A1')
